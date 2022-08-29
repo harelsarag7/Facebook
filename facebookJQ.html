@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body{
+            background-color: rgb(244, 244, 244) !important;
+        }
+        #form2 {
+            display: flex;
+            max-width: 580px ;
+            flex-direction: column;
+            margin: 80px auto 40px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 2px 0.5px rgb(212, 212, 212);
+        }
+
+        .newPost{
+            border-radius: 6px;
+        background-color: white;            
+            box-shadow: 0 1px 1px 0.01px;
+            margin-bottom: 40px;
+            padding: 5px;
+        }
+        
+        #newPosts{
+            width: 500px;
+  background-position: center;
+  background-size: cover;
+  margin: 50px auto;
+}
+.post{
+    border: none;
+    background-color: rgb(244, 244, 244) !important;
+    padding: 8px;
+    width: 500px;
+    border-radius: 25px;
+}
+
+#postButton{ 
+    padding: 6px 20px;
+    border-radius: 25px;
+    border: none;
+    background-color: #1778F2;
+    color: white;
+    margin-left: 35px;
+    font-size: 15px;
+}
+
+#postButton:hover{
+    transition: 0.1s;
+    font-size: 18px;
+    padding: 3px 15.5px;
+}
+
+#postButton:not(:hover){
+    transition: 0.1s;
+    font-size: 15px;
+    padding: 6px 20px;
+
+}
+
+#iconBeforePost{
+    position: relative;
+    bottom: 5px;
+}
+#post::placeholder{
+    position: relative;
+    left: 5px;
+}
+.imgPost{
+    max-width: 490px;
+    /* margin-left: -15px; */
+    margin-top: 20px;
+}
+.userImg{
+    width:60px;
+}
+
+.userName{
+    font-size: 19px;
+    font-weight: bold;
+    position: relative;
+    bottom: 10px;
+    left: 14px;
+}
+
+.userTime{
+    position: relative;
+    top: 15px;
+    right: 30px;
+}
+
+.bodyPost{
+    display: flex;
+    flex-direction:column ;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+#bodyPost{
+    width: 460px;
+}
+
+.fade {
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding:    2px !important;
+    background-color: white !important;
+    box-shadow: 0 0 4px 0.6px rgb(179, 179, 179);
+    position: fixed !important;
+    z-index: 999;
+    width: 100%;
+    top: 0;
+}
+.headerLi{
+    display: flex;
+    margin: 0 auto;
+}
+.searchHeader{
+    position: fixed;
+    right: 10px;
+    top: 5px;
+    z-index: 999;
+}
+
+.active{
+    border-bottom: 3px solid black;
+}
+.header img {
+    margin: 0 30px;
+}
+.writePost{
+    background-color: white;
+}
+
+#facebookImg{
+    z-index: 9999;
+    position: fixed;
+    top:0;
+    width: 140px;
+}
+#image{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+
+    /* justify-content: space-between; */
+}
+
+#image + label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.10em;
+    font-weight: 500;
+    color: rgb(145, 145, 145);
+    padding: 6px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#image:focus + label,
+#image +label:hover{
+    background-color: rgb(244, 244, 244);
+}
+
+#imageIcon{
+    margin: 0 10px 0 0;
+}
+#video{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+
+    /* justify-content: space-between; */
+}
+
+#video + label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.10em;
+    font-weight: 500;
+    color: rgb(145, 145, 145);
+    padding: 6px 20px;
+    border-radius: 15px;
+    /* display: inline-block; */
+    cursor: pointer; /* "hand" cursor */
+}
+
+#video:focus + label,
+#video +label:hover{
+    background-color: rgb(244, 244, 244);
+}
+
+#videoIcon{
+    margin: 0 10px 0 0;
+}
+
+.divDown{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 35px;
+}
+
+#facebookSearch{
+    padding: 8px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(244, 244, 244);
+    width: 250px;
+    position: relative;
+    right: 20px;
+}
+
+
+#facebookSearchLabel:hover {
+    cursor: text;
+}
+#facebookSearchLabel {
+    position: absolute;
+    z-index: 5;
+    right: 87px;
+    top: 9px;
+    color: gray;
+    width: 140px ;
+}
+
+.focusSearch {
+    /* position: relative !important; */
+    right: 120px !important;
+    transition: 0.2s !important;
+}
+#searchIcon{
+    position: relative;
+    left: 45px;
+    top: 12px;
+    z-index: 5;
+}
+
+.sideBar{
+
+    position: fixed;
+    right: 82%;
+    top: 68px;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 20px;
+    float: left;
+}
+.sideBar div {
+    padding: 8px 5px;
+    
+    border-radius: 10px;
+    width: 240px;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+.sideBar div img {
+    margin-right: 8px;
+}
+
+.sideBar div:hover {
+    background-color: rgb(221, 221, 221);
+    cursor: pointer;
+    
+}
+
+.sideBarContacts{
+    position: fixed;
+    left: 81%;
+    top: 68px;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 20px;
+    float: right;
+}
+.sideBarContacts div {
+    padding: 8px 5px;
+    border-radius: 6px;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+.sideBarContacts .divInContacts img {
+    margin-right: 8px;
+    border-radius: 50% !important;
+}
+
+.sideBarContacts .divInContacts:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+    
+}
+
+#divContactTop {
+    opacity: 65%;
+    margin-bottom: -10px;
+}
+#divContactTop > p {
+    font-weight: 600;
+}
+#divContactTop > img {
+    position: relative;
+    left: 30px;
+    bottom: 6px;
+    opacity: 65%;
+}
+#divContactTop > img:hover {
+    cursor: pointer;
+}
+
+#viewMoreIcon{
+    border-radius: 50%;
+    background-color: rgb(218, 218, 218);
+    padding: 7.5px;
+}
+
+#lista1 {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+    </style>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">  
+</head>
+<body>
+    
+    <img id="facebookImg" src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"  alt="">
+
+    <nav class="navbar navbar-expand-lg header">
+        <div class="container-fluid  ">
+`             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 headerLi">
+              <li class="nav-item">
+                <a  class="nav-link active" onmouseenter="enterHome()" onmouseout="outHome()"  aria-current="page" href="#"><img  onmouseenter="enterHome()" onmouseout="outHome()" id="home"src="https://i.ibb.co/RzbVZWB/1946436.png"  width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="https://i.ibb.co/2SLCRKC/2791441.png" width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onmouseenter="enterEcommerce()" onmouseout="outEcommerce()"  href="facebookEcommerce.html"><img onmouseenter="enterEcommerce()" onmouseout="outEcommerce()"   id="ecommerce"src="https://i.ibb.co/3cskgTm/1332655.png" width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onmouseenter="enterGroup()" onmouseout="outGroup()" href="#"><img id="group"  onmouseenter="enterGroup()" onmouseout="outGroup()" src="https://i.ibb.co/VpKBmNK/681443.png" width="25px"  alt=""></a>
+              </li>
+            </ul>
+
+        </div>
+    </div>
+    <li class="nav-item navbar-nav searchHeader">
+        <img id="searchIcon" src="https://i.ibb.co/ss1QqFY/622669.png"  width="18px" height="18px" alt="">
+        <label for="facebookSearch" id="facebookSearchLabel">Search in facebook:</label>
+        <input onfocus="focusSearch()" onfocusout="focusOutSearch()" oninput="onInputSearch()"  name="facebookSearch" type="search" id="facebookSearch" >
+    </li>
+</nav>
+
+    <div class="writePost">
+
+    </div>
+    <form class="writePost" action="#" id="form2" enctype="multipart/form-data">
+        <!-- <input type="text" id="name" placeholder="Name:"/> -->
+        <div>
+            <img id="iconBeforePost" src="https://www.e-shop.co.il/images/galleries/24_673.jpg" width="60" alt="">
+            <input type="text" id="bodyPost" class="post" placeholder="How's going Harel?"   onblur="document.getElementById('lblText').innerHTML=this.value.replace(/\n/gi,'<br/>')" />
+        </div>
+        <div class="divDown">
+        
+            <input type="file" name="image" id="image">
+                <label for="image"><img id="imageIcon"  src="https://i.ibb.co/pftpmGF/3792702.png" width="30px" alt=""> <span> Choose a file</span> </label>
+      
+                <input type="file" name="video" id="video">
+                <label for="video"><img id="videoIcon" src="https://i.ibb.co/WVmhSb5/3172569.png" width="30px" alt=""> <span> Go live</span> </label>
+      
+                <button id="postButton" on onclick="postForm(event)">Publish</button>
+        </div>
+        
+    </form>
+    <div id="newPosts"> 
+        
+    </div>
+
+
+    <div class="sideBar">
+        <div> <img src="https://www.e-shop.co.il/images/galleries/24_673.jpg" width="25px" alt=""><span style="font-weight: 500"> Harel Sarag</span></div>
+        <div> <img src="https://i.ibb.co/H4xXz7G/4577369.png" width="25px" alt=""><span style="font-weight: 400">Friends</span></div>
+        <div> <img src="https://i.ibb.co/8XdrhpS/5338104.png" width="25px" alt=""><span style="font-weight: 400">Saved</span></div>
+        <div><img src="https://i.ibb.co/JvwqkSy/5328050.png" width="25px" alt=""> <span style="font-weight: 400"> Groups</span></div>
+        <a href="facebookEcommerce.html" style="text-decoration-line: none; color:#212529;"><div ><img src="https://i.ibb.co/GQv0ZbS/6387839.png" width="25px" alt=""><span style="font-weight: 500">Marketplace</span></div></a> 
+        <div> <img src="https://i.ibb.co/QNRyL8v/5323720.png" width="25px" alt=""><span style="font-weight: 500">Watch</span></div>
+        <div><img src="https://i.ibb.co/hm7rmf1/3237535.png" width="25px" alt=""> <span style="font-weight: 400"> Events</span></div>
+    </div>
+
+    <div class="sideBarContacts">
+        <div id="divContactTop">
+
+            <p>Contacts</p>
+            <img id="contactSearch" src="https://i.ibb.co/ss1QqFY/622669.png"  width="18px" alt="">
+        </div>
+        <ul id="lista1" class="list-group"> 
+            <!-- <li id = "1" class="list-group-item"> -->
+        <div class="divInContacts"> <img class="imgInContacts" src="https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/121965128_5237960516229913_5627691003554564000_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ZkLhbewy5DcAX8F_Q6k&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT-RKbHPijUgE_-8wspig3SBQWtovxGqQ49IBFZI82gXyw&oe=6325BFF1" width="25px" alt=""><span style="font-weight: 400">Yarin Zafrani</span></div>
+        <div class="divInContacts"> <img class="imgInContacts" src="https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/71850281_2553591861346653_2280599416240865280_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=tmcQ_5TJ08oAX9vtb-q&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT_VW5oMbSV-_VrG5C5ZNUa3Q2mU7xo-c_fxU5hfYWBgkg&oe=632323B1" width="25px" alt=""><span style="font-weight: 400">Ofek Sarag</span></div>
+        <div class="divInContacts"><img class="imgInContacts" src="https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/69050270_2858648447496023_7848574763709497344_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=e8aaf5rJor0AX9-HlaZ&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT9OLQGlYgN8-qXvMea0b5RlSdyuDpF1UZIjRUadUDXdFQ&oe=6326EAE2" width="25px" alt=""> <span style="font-weight: 400"> Niv Kohavi</span></div>
+        <div class="divInContacts"> <img class="imgInContacts" src="https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/69509324_2427524844000321_1366760053599633408_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_aid=0&_nc_ohc=UREwl3YRfYwAX_mqcS2&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT9yXJ_ypUh4KRPDVi88jLlqOh_ReQ_vGstqQu_HxRzbHw&oe=63236565" width="25px" alt=""><span style="font-weight: 400">Ido Mizrachi</span></div>
+        <div class="divInContacts"> <img class="imgInContacts" src="https://scontent.fsdv1-2.fna.fbcdn.net/v/t39.30808-6/290054395_10217141020277343_8502031014614901455_n.jpg?stp=cp1_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PcJ8ypsgzgwAX9-yat4&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT-EAwgqmMB0InwKp4wEYk1rVPVTpYmNTaORuodGgclbAA&oe=6303FA3A" width="25px" alt=""><span style="font-weight: 400">Gal Or</span></div>
+        <div class="divInContacts divInContactsMore" id="divInContactsMore" style="display: none;"> <img class="imgInContacts" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.18169-9/10599313_10203712927961030_5869154828051209188_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=I9Ueiwu-0mkAX8brdwg&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT-fuwQ-KUsjo9FTYUjQxfW51yRbM5nOw07PCqNbXhApqg&oe=6327D6DD" width="25px" alt=""><span style="font-weight: 400">Lidor Gur</span></div>
+        <div class="divInContacts divInContactsMore" id="divInContactsMore" style="display: none;"> <img class="imgInContacts" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/71050175_10217294238406062_531820936698003456_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=UUVZgPpBd4sAX-au1D_&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT8qdU4MjBDFdCTz17nACKTwkFOaJcAKykwpYjPNNDFXuA&oe=6327D6A2" width="25px" alt=""><span style="font-weight: 400">Guy ML</span></div>
+        <div class="divInContacts divInContactsMore" id="divInContactsMore" style="display: none;"><img class="imgInContacts" src="https://scontent.fhfa2-2.fna.fbcdn.net/v/t1.6435-9/83687610_3039141259437761_7601923545043566592_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=0Ymy4MX1SJ8AX_vXGI8&_nc_ht=scontent.fhfa2-2.fna&oh=00_AT8sJNF286O45bvBJ7gW4rVmf9Sj6lM2FXCM6H76O1tvTw&oe=63283B47" width="25px" alt=""> <span style="font-weight: 400"> Lior Paz</span></div>
+        <!-- <div class="divInContacts divInContactsMore" id="divInContactsMore" style="display: none;"> <img class="imgInContacts" src="https://scontent.fsdv1-2.fna.fbcdn.net/v/t1.6435-9/69509324_2427524844000321_1366760053599633408_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_aid=0&_nc_ohc=UREwl3YRfYwAX_mqcS2&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT9yXJ_ypUh4KRPDVi88jLlqOh_ReQ_vGstqQu_HxRzbHw&oe=63236565" width="25px" alt=""><span style="font-weight: 400">Yonatan Barak</span></div> -->
+        <!-- <div class="divInContacts divInContactsMore" id="divInContactsMore" style="display: none;"> <img class="imgInContacts" src="https://scontent.fsdv1-2.fna.fbcdn.net/v/t39.30808-6/290054395_10217141020277343_8502031014614901455_n.jpg?stp=cp1_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PcJ8ypsgzgwAX9-yat4&_nc_ht=scontent.fsdv1-2.fna&oh=00_AT-EAwgqmMB0InwKp4wEYk1rVPVTpYmNTaORuodGgclbAA&oe=6303FA3A" width="25px" alt=""><span style="font-weight: 400">Ofek Avraham</span></div> -->
+    </ul>
+    <ul class="list-group">
+        <div class="divInContacts" id="divInContactsButtonMore"><img class="imgInContacts" id="viewMoreIcon" src="https://i.ibb.co/HYQqNpX/60781.png" width="25px" alt=""> <span id="spanMore" style="font-weight: 400"> More</span></div>
+    </ul>
+    <!-- </li> -->
+    </div>
+    <script>
+        $(document).ready(function(){
+  $("#facebookSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#lista1 div" ).css("display", function() {
+  return this.innerText.toLowerCase().indexOf(value) > -1 ? "":"none"
+    });
+  });
+});
+
+
+$(`#contactSearch`).on(`click`, () => {
+    $("#facebookSearch").trigger("focus")
+}) 
+
+
+
+$(`#facebookSearch`).on(`focusout`, () => {
+$(".divInContactsMore").css("display" , "none")
+    })
+
+
+$(`#divInContactsButtonMore`).on(`click`, function() {
+    var clicks = $(this).data('clicks');
+if (!clicks) {
+ // odd clicks
+ $(`.divInContactsMore`).css("display", "block");
+ $(`#spanMore`).text("Less");
+ 
+} else {
+    // even clicks
+    $(`.divInContactsMore`).css("display", "none");
+    $(`#spanMore`).text("More");
+
+}
+$(this).data("clicks", !clicks);
+})
+    </script>
+    <script>
+
+        function focusSearch(){
+            document.querySelector("#searchIcon").style.display = "none";
+            document.querySelector("#facebookSearchLabel").classList.add("focusSearch")
+        }
+        
+        function focusOutSearch(){
+            if(document.querySelector("#facebookSearch").value === ``){
+            document.querySelector("#searchIcon").style.display = "none";
+            }
+            document.querySelector("#facebookSearchLabel").classList.remove("focusSearch")
+        }
+        
+        function onInputSearch(){
+            if(document.querySelector("#facebookSearch").value !== ""){
+                document.querySelector("#facebookSearchLabel").style.display = "none";
+            } else {
+                document.querySelector("#facebookSearchLabel").style.display = "block";
+            }
+        }
+
+ document.querySelector("#facebookSearch").addEventListener('focusout', (event) => {
+    if(document.querySelector("#facebookSearch").value == ""){
+    document.querySelector("#searchIcon").style.display = "block";}
+    });
+
+
+        // function enterHome(){
+        //     document.querySelector("#home").src = "https://i.ibb.co/RzbVZWB/1946436.png";
+        // }
+
+        // function outHome(){
+        //     document.querySelector("#home").src = "https://i.ibb.co/QmP2ByG/1946488.png";
+        // }
+
+        function enterEcommerce(){
+            document.querySelector("#ecommerce").src = "https://i.ibb.co/kMyLHwD/3514491.png";
+        }
+
+        function outEcommerce(){
+            document.querySelector("#ecommerce").src = "https://i.ibb.co/3cskgTm/1332655.png";
+        }
+        
+        function enterGroup(){
+            document.querySelector("#group").src = "https://i.ibb.co/HNb7s1C/681494.png";
+        }
+        function outGroup(){
+            document.querySelector("#group").src = "https://i.ibb.co/VpKBmNK/681443.png";
+        }
+    </script>
+    <script>
+
+        document.querySelector("#name").value = "Harel";
+        function postForm(e){
+            e.preventDefault();
+
+            
+            fetch("https://jsonplaceholder.typicode.com/posts",{
+                method: 'POST',
+                body: JSON.stringify({
+                title: "Harel" ,
+                // title: document.querySelector("#name").value ,
+                body: document.querySelector(".post").value,
+                bodyPost: document.querySelector("#bodyPost").value,
+                userId: 1,
+            }),
+            headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+                }
+            )
+            .then((resualt) => resualt.json())
+            .then((val) => {
+                let newPost = document.createElement("div");
+                newPost.setAttribute("class", "newPost fade")
+                let img = document.createElement("img")
+                img.setAttribute("class", "userImg")
+                img.src = "https://www.e-shop.co.il/images/galleries/24_673.jpg";
+                let userName = document.createElement("span")
+                userName.setAttribute("class", "userName")
+                userName.append(val.title)
+                let time = document.createElement("span")
+                time.setAttribute("class", "userTime")
+
+                const d = new Date("July 21, 1983 01:15:00");
+
+                let hours = new Date().getHours();
+                let min = new Date().getMinutes()
+                time.append(`${hours}:${min}`)
+
+                let body = document.createElement("div");
+                body.setAttribute("class", "bodyPost");
+                body.innerHTML = (val.bodyPost.replaceAll("\n","<br/>"));
+                
+                let imgCheck = document.createElement("img");
+                imgCheck.setAttribute("class", "imgPost");
+
+
+
+    const image_input = document.querySelector("#image");
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            const uploaded_image = reader.result;
+            imgCheck.src = uploaded_image;
+        });
+        reader.readAsDataURL(image_input.files[0]);
+
+
+                newPost.append(img, userName,time, body, imgCheck)
+
+                document.querySelector("#newPosts").append(newPost);
+
+            })
+            document.querySelector("#bodyPost").value = ``;
+        }
+
+
+    </script>
+</body>
+</html>

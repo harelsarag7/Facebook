@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: rgb(244, 244, 244) !important;
+        }
+
+        .header{
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding:    2px !important;
+            background-color: white !important;
+            box-shadow: 0 0 4px 0.6px rgb(179, 179, 179);
+            position: fixed !important;
+            z-index: 999;
+            width: 100%;
+            top: 0;
+        }
+        .headerLi{
+            display: flex;
+            margin: 0 auto;
+        }
+        .searchHeader{
+    position: fixed;
+    right: 10px;
+    top: 5px;
+    z-index: 999;
+}
+
+        .active{
+            border-bottom: 3px solid black;
+        }
+        .header img {
+            margin: 0 30px;
+        }
+    #facebookImg{
+        z-index: 9999;
+        position: fixed;
+        top:0;
+        width: 140px;
+          }       
+          #facebookSearch{
+    padding: 8px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(244, 244, 244);
+    width: 250px;
+    position: relative;
+    right: 20px;
+}
+
+#facebookSearch::placeholder{
+    color: gray;
+    position: relative;
+    left: 35px;
+}
+#facebookSearchLabel:hover {
+    cursor: text;
+}
+#facebookSearchLabel {
+    position: absolute;
+    z-index: 5;
+    right: 87px;
+    top: 9px;
+    color: gray;
+    width: 140px ;
+}
+
+
+.focusSearch {
+    /* position: relative !important; */
+    right: 120px !important;
+    transition: 0.2s !important;
+} 
+#searchIcon{
+    position: relative;
+    left: 45px;
+    top: 12px;
+    z-index: 5;
+}
+
+
+#image{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+
+    /* justify-content: space-between; */
+}
+
+#image + label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.10em;
+    font-weight: 500;
+    color: rgb(145, 145, 145);
+    padding: 6px 20px;
+    border-radius: 15px;
+    /* display: inline-block; */
+    cursor: pointer; /* "hand" cursor */
+}
+
+#image:focus + label,
+#image +label:hover{
+    background-color: rgb(244, 244, 244);
+}
+
+#imageIcon{
+    margin: 0 10px 0 0;
+}
+    </style>
+
+<!-- CSS only -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">  
+</head>
+<body>
+    
+    <img id="facebookImg" src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"  alt="">
+
+    <nav class="navbar navbar-expand-lg header">
+        <div class="container-fluid  ">
+`             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 headerLi">
+              <li class="nav-item">
+                <a  class="nav-link active" onmouseenter="enterHome()" onmouseout="outHome()"  aria-current="page" href="#"><img  onmouseenter="enterHome()" onmouseout="outHome()" id="home"src="https://i.ibb.co/QmP2ByG/1946488.png"  width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="https://i.ibb.co/2SLCRKC/2791441.png" width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onmouseenter="enterEcommerce()" onmouseout="outEcommerce()"  href="#"><img onmouseenter="enterEcommerce()" onmouseout="outEcommerce()"   id="ecommerce"src="https://i.ibb.co/3cskgTm/1332655.png" width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onmouseenter="enterGroup()" onmouseout="outGroup()" href="#"><img id="group"  onmouseenter="enterGroup()" onmouseout="outGroup()" src="https://i.ibb.co/VpKBmNK/681443.png" width="25px"  alt=""></a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+        <li class="nav-item navbar-nav searchHeader">
+            <img id="searchIcon" src="https://i.ibb.co/ss1QqFY/622669.png"  width="18px" height="18px" alt="">
+            <label for="facebookSearch" id="facebookSearchLabel">Search in facebook:</label>
+            <input onfocus="focusSearch()" onfocusout="focusOutSearch()" oninput="onInputSearch()"  name="facebookSearch" type="search" id="facebookSearch" >
+        </li>
+      </nav>
+
+<!-- Button trigger modal -->
+<button type="button" style="margin-top:150px;" class="btn btn1 btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Sell your Item!</h5>
+        <button type="button" class="btn-close btn2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="Item name:">
+          <label for="floatingInput">Item name:</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="floatingInput" placeholder="Price:">
+          <label for="floatingInput">Price:</label>
+        </div>
+<div style="width: 190px;">
+    <input type="file" name="image" id="image">
+    <label for="image"><img id="imageIcon"  src="https://i.ibb.co/pftpmGF/3792702.png" width="30px" alt=""> <span> Choose a file</span> </label>
+</div>
+
+ 
+
+
+
+          </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn2 btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary container-fluid">Publish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script>
+
+document.querySelector(".btn1").addEventListener("click", ()=>{
+            document.querySelector("#facebookImg").style.opacity = "40%"
+        })
+document.querySelector(".btn2").addEventListener("click", ()=>{
+            document.querySelector("#facebookImg").style.opacity = "100%"
+        })
+
+        function focusSearch(){
+            document.querySelector("#searchIcon").style.display = "none";
+            document.querySelector("#facebookSearchLabel").classList.add("focusSearch")
+        }
+        
+        function focusOutSearch(){
+            if(document.querySelector("#facebookSearch").value === ``){
+            document.querySelector("#searchIcon").style.display = "none";
+            }
+            document.querySelector("#facebookSearchLabel").classList.remove("focusSearch")
+        }
+        
+        function onInputSearch(){
+            if(document.querySelector("#facebookSearch").value !== ""){
+                document.querySelector("#facebookSearchLabel").style.display = "none";
+            } else {
+                document.querySelector("#facebookSearchLabel").style.display = "block";
+            }
+        }
+
+ document.querySelector("#facebookSearch").addEventListener('focusout', (event) => {
+    if(document.querySelector("#facebookSearch").value == ""){
+    document.querySelector("#searchIcon").style.display = "block";}
+    });
+
+
+        function enterHome(){
+            document.querySelector("#home").src = "https://i.ibb.co/RzbVZWB/1946436.png";
+        }
+
+        function outHome(){
+            document.querySelector("#home").src = "https://i.ibb.co/QmP2ByG/1946488.png";
+        }
+
+        function enterEcommerce(){
+            document.querySelector("#ecommerce").src = "https://i.ibb.co/kMyLHwD/3514491.png";
+        }
+
+        function outEcommerce(){
+            document.querySelector("#ecommerce").src = "https://i.ibb.co/3cskgTm/1332655.png";
+        }
+        
+        function enterGroup(){
+            document.querySelector("#group").src = "https://i.ibb.co/HNb7s1C/681494.png";
+        }
+        function outGroup(){
+            document.querySelector("#group").src = "https://i.ibb.co/VpKBmNK/681443.png";
+        }
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

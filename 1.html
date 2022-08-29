@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        table{
+            display: grid;
+            grid-template-columns: 1fr, 1fr, 1fr, 1fr;
+            grid-auto-rows: auto;
+            /* gap: 10px; */
+        }
+        tr{
+            border: 1px solid black;
+            background-color: lightgreen;
+        }
+        td{
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid red;
+        }
+    </style> -->
+
+    <style>
+        #form2 {
+            display: flex;
+        }
+
+
+        .newPost{
+            /* background-color: lightblue; */
+            /* border: 1px solid black; */
+            background-color: rgb(244, 244, 244);
+            border-radius: 6px;
+            
+            box-shadow: 0 1px 1px 0.01px;
+            margin-bottom: 40px;
+            padding: 5px;
+
+        }
+
+        #newPosts{
+  width: 500px;
+  margin: 50px 0 0 40px;
+  /* height: px; */
+  /* border: 1px solid black; */
+  background-position: center;
+  background-size: cover;
+}
+.imgPost{
+    max-width: 500px;
+    margin-left: -15px;
+    margin-top: 20px;
+}
+.userImg{
+    width:60px;
+    /* background-color: white; */
+    border-radius: 50%;
+}
+
+.userName{
+    font-size: 19px;
+    font-weight: bold;
+    position: relative;
+    bottom: 10px;
+    left: 14px;
+}
+
+.userTime{
+    position: relative;
+    top: 15px;
+    right: 30px;
+}
+
+.bodyPost{
+    display: flex;
+    flex-direction:column ;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+#bodyPost{
+    width: 200px;
+}
+
+.fade {
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+    </style>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">  
+</head>
+<body>
+    <button onclick="getUsers()">Click</button>
+    <table class="table table-striped">
+
+        <tr id="firstTr"></tr>
+    </table>
+
+    <!-- <form action="#">
+        <input type="text" id="name" placeholder="Name:">
+        <input type="text" id="username" placeholder="Username:">
+        <input type="email" id="email" placeholder="Email:">
+        <input type="text" id="email" placeholder="City:">
+        <button id="post" onclick="postForm()">POST!</button>
+    </form> -->
+    <form action="#" id="form2" enctype="multipart/form-data">
+        <input type="text" id="name" placeholder="Name:"/>
+        <input type="text" id="post" placeholder="Type here:"/>
+        <textarea  id="bodyPost"  onblur="document.getElementById('lblText').innerHTML=this.value.replace(/\n/gi,'<br/>')" cols="10" rows="5" ></textarea>
+        <input type="file" id="image">
+        <!-- <textarea id="txtArea" onblur="document.getElementById('lblText').innerHTML=this.value.replace(/\n/gi,'<br/>')" cols="10" rows="5"></textarea> -->
+        <!-- <textarea type="text" id="post"></textarea> -->
+        <button id="postButton" onclick="postForm(event)">POST!</button>
+    </form>
+
+    <div id="newPosts"> 
+        
+    </div>
+    <script>
+        // function getUsers(){
+        //     fetch("https://jsonplaceholder.typicode.com/users")
+        //     .then((resualt) => resualt.json())
+        //     .then((val) => {
+
+        //         for(let i = 0; i < val.length; i++){
+
+        //             if(i == 0){
+        //                 let tr = document.createElement("tr");
+        //                 let td1 = document.createElement("td");
+        //                 td1.textContent = "Name:";
+                        
+        //                 let td2 = document.createElement("td");
+        //                 td2.textContent = "Username:";
+                        
+        //                 let td3 = document.createElement("td");
+        //                 td3.textContent = "Email:";
+                        
+        //                 let td4 = document.createElement("td");
+        //                 td4.textContent = "City:";
+                        
+        //                 tr.append(td1, td2, td3, td4)
+        //                 document.querySelector("#firstTr").append(tr);
+
+        //             }
+        //             let tr = document.createElement("tr")
+        //             let td1 = document.createElement("td");
+        //             td1.append(val[i].name)
+        //             let td2 = document.createElement("td");
+        //             td2.append(val[i].username)
+        //             let td3 = document.createElement("td");
+        //             td3.append(val[i].email)
+        //             let td4 = document.createElement("td");
+        //             td4.append(val[i].address.city)
+        //             tr.append(td1, td2, td3, td4);
+
+        //             document.querySelector("#firstTr").append(tr);
+        //         };
+
+                
+        //     })
+        // }
+
+        document.querySelector("#name").value = "Harel";
+        function postForm(e){
+            e.preventDefault();
+            
+            fetch("https://jsonplaceholder.typicode.com/posts",{
+                method: 'POST',
+                body: JSON.stringify({
+                title: document.querySelector("#name").value ,
+                body: document.querySelector("#post").value,
+                bodyPost: document.querySelector("#bodyPost").value,
+                // body: document.querySelector("#post").value + document.querySelector("#image").value,
+                userId: 1,
+            }),
+            headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+                }
+            )
+            .then((resualt) => resualt.json())
+            .then((val) => {
+                let newPost = document.createElement("div");
+                newPost.setAttribute("class", "newPost fade")
+                let img = document.createElement("img")
+                img.setAttribute("class", "userImg")
+                img.src = "https://www.e-shop.co.il/images/galleries/24_673.jpg";
+                // newPost.textContent = val.title + ": " + val.body;
+                // newPost.textContent = val.body;
+                let userName = document.createElement("span")
+                userName.setAttribute("class", "userName")
+                userName.append(val.title)
+                let time = document.createElement("span")
+                time.setAttribute("class", "userTime")
+
+                const d = new Date("July 21, 1983 01:15:00");
+
+                let hours = new Date().getHours();
+                let min = new Date().getMinutes()
+                time.append(`${hours}:${min}`)
+
+                let body = document.createElement("div");
+                body.setAttribute("class", "bodyPost");
+                body.innerHTML = (val.bodyPost.replaceAll("\n","<br/>"));
+
+                // let imgPost = document.createElement("img")
+            //    imgPost.setAttribute("class", "imgPost");
+                
+const image_input = document.querySelector("#image");
+    
+    image_input.addEventListener("change", function() {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            const uploaded_image = reader.result;
+            // document.querySelector("#newPosts").style.backgroundImage = `url(${uploaded_image})`;
+            var imgPost = document.createElement("img");
+            imgPost.setAttribute("class", "imgPost");
+            imgPost.src = uploaded_image;
+            // body.style.backgroundImage = `url(${uploaded_image})`;
+            body.append(imgPost)
+
+        });
+        reader.readAsDataURL(this.files[0]);
+    });
+
+
+                newPost.append(img, userName,time, body)
+
+                document.querySelector("#newPosts").append(newPost);
+
+            })
+                // document.querySelector("#newPosts").innerHTML = (val.title))
+        }
+
+
+    </script>
+</body>
+</html>

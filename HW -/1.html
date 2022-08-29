@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="min1" placeholder="Q1 Enter minimum number:">
+    <input type="number" id="max1" placeholder="Q1 Enter maximum number:">
+    <button onclick="boomFunc()">Click! Q1</button>
+    <p id="BOOM"></p>
+    
+    
+    <input type="number" id="min2" placeholder="Q2 Enter minimum number:">
+    <input type="number" id="max2" placeholder="Q2 Enter maximum number:">
+    <button onclick="primeNum()">prime? Q2</button> 
+    <p id="prime"></p>
+
+
+
+    <button onclick="animalFunc()">Click! Q3</button>
+    <p id="cute"></p>
+
+    <button onclick="daysFunc()">Click! Q4</button>
+    <p id="days"></p>
+
+    <button onclick="sizeFunc()">Click! Q5</button>
+    <p id="size"></p>
+    
+    
+    <button onclick="pizzaFunc()">Get pizza! Q6</button>
+    <p id="pizza"></p>
+    
+    <button onclick="passwordFunc()">Get password! Q7</button>
+    <p id="password"></p>
+
+
+<script>
+        // 1 then and catch
+
+//         function generate7BoomAfterDelayAsync(min, max){
+//             return new Promise(function executor (resolve, reject){
+
+//                 setTimeout( () =>{
+                    // let rand = Number.parseInt((Math.random() * (max - min) + min))
+//                     if(rand % 7 === 0){
+//                         resolve(rand)
+//                     } else {
+//                         reject(rand)
+//                 }
+//             }
+//             , 1000)
+            
+//         }
+//     )}
+// const min1 = document.querySelector("#min1")
+// const max1 = document.querySelector("#max1")
+//         function boomFunc(){
+//             generate7BoomAfterDelayAsync(Number.parseInt(min1.value) ,Number.parseInt(max1.value))
+//             .then((val) => document.querySelector("#BOOM").innerHTML = (`7 BOOM!`))
+//             .catch((val)=> document.querySelector("#BOOM").innerHTML = (`Error: ${val}`));
+//         }
+
+
+
+        // 1 async - await
+//         function generate7BoomAfterDelayAsync(min, max){
+//             return new Promise(function executor (resolve, reject){
+
+//                 setTimeout( () =>{
+//                     let rand = Number.parseInt((Math.random() * (max - min) + min))
+//                     if(rand % 7 === 0){
+//                         resolve(rand)
+//                     } else {
+//                         reject(rand)
+//                 }
+//             }
+//             , 1000)
+            
+//         }
+//     )}
+// const min1 = document.querySelector("#min1")
+// const max1 = document.querySelector("#max1")
+
+//         async function boomFunc(){
+//             try {
+//             const resualt = await generate7BoomAfterDelayAsync(Number.parseInt(min1.value) ,Number.parseInt(max1.value))
+//                  document.querySelector('#BOOM').innerHTML = `7 BOOM! `
+//             } catch(e){
+//                 document.querySelector("#BOOM").innerHTML = `Error: ${e}`
+//             }
+//         }
+
+
+        // 2 then and catch
+//         function generatePrimeNumberAfterDelayAsync(min, max){
+//           return new Promise(function executor (resolve, reject){
+
+
+//                 setTimeout( () =>{
+//                     let rand = Number.parseInt((Math.random() * (max - min) + min))
+//                     for(let i = 2; i < rand - 1; i++){
+//                         if(rand % i === 0){
+//                             reject(rand);
+//                         } 
+//                     }
+//                             resolve(rand);
+//             }
+//             , 1000)
+            
+//         }
+//     )}
+// const min2 = document.querySelector("#min2")
+// const max2 = document.querySelector("#max2")
+//         function primeNum(){
+//             generatePrimeNumberAfterDelayAsync(Number.parseInt(min2.value) ,Number.parseInt(max2.value)).then((val) => document.querySelector("#prime").innerHTML = (`PRIME: ${val}`)).catch((val)=> document.querySelector("#prime").innerHTML = (`not a prime: ${val}`));
+//         }
+
+
+            // 2 async - await
+
+//             function generatePrimeNumberAfterDelayAsync(min, max){
+//           return new Promise(function executor (resolve, reject){
+
+
+//                 setTimeout( () =>{
+//                     let rand = Number.parseInt((Math.random() * (max - min) + min))
+//                     for(let i = 2; i < rand  ; i++){
+//                         if(rand % i === 0){
+//                             reject(rand);
+//                         }
+//                     }
+//                     resolve(rand);  
+//             }
+//             , 1000)
+            
+//         }
+//     )}
+// const min2 = document.querySelector("#min2")
+// const max2 = document.querySelector("#max2")
+
+//         async function primeNum(){
+//             try {
+//             const resualt = await generatePrimeNumberAfterDelayAsync(Number.parseInt(min2.value) ,Number.parseInt(max2.value))
+//                 document.querySelector("#prime").innerHTML = (`PRIME: ${resualt}`)   ;
+//             } catch(e){
+//                 document.querySelector("#prime").innerHTML = (`not a prime: ${e}`);
+//             }
+//         }
+
+        // 3 then and catch
+    //     function generateCuteAnimalAfterDelayAsync(){
+    //         return new Promise(function executor (resolve, reject){
+
+    //             setTimeout( () =>{
+    //                 let animal = ["Cat", "Dog", "Rabbit", "Parrot", "Scorpion", "Spider", "Cockroach"]
+    //                 let rand = Number.parseInt((Math.random() * 8))
+
+    //                 let resualt = animal[rand];
+    //                 if(resualt === "Scorpion" || resualt === "Spider" || resualt === "Cockroach"){
+    //                     reject(resualt);
+    //                 } else {
+    //                     resolve(resualt);
+    //                 }
+    //         }
+    //         , 1000)
+            
+    //     }
+    // )}
+    //     function animalFunc(){
+    //         generateCuteAnimalAfterDelayAsync().then((val) => document.querySelector("#cute").innerHTML = (`CUTE: ${val}`)).catch((val)=> document.querySelector("#cute").innerHTML = (`Not a cute animal: ${val}`));
+    //     }
+
+        // 3 async-await
+    //     function generateCuteAnimalAfterDelayAsync(){
+    //         return new Promise(function executor (resolve, reject){
+
+    //             setTimeout( () =>{
+    //                 let animal = ["Cat", "Dog", "Rabbit", "Parrot", "Scorpion", "Spider", "Cockroach"]
+    //                 let rand = Number.parseInt((Math.random() * 7))
+
+    //                 let resualt = animal[rand];
+    //                 if(resualt === "Scorpion" || resualt === "Spider" || resualt === "Cockroach"){
+    //                     reject(resualt);
+    //                 } else {
+    //                     resolve(resualt);
+    //                 }
+    //         }
+    //         , 1000)
+            
+    //     }
+    // )}
+    //     function animalFunc(){
+    //         generateCuteAnimalAfterDelayAsync().then((val) => document.querySelector("#cute").innerHTML = (`CUTE: ${val}`)).catch((val)=> document.querySelector("#cute").innerHTML = (`Not a cute animal: ${val}`));
+    //     }
+
+        // async function animalFunc(){
+        //     try {
+        //     const resualt = await generateCuteAnimalAfterDelayAsync()
+        //     document.querySelector("#cute").innerHTML = (`CUTE: ${resualt}`);
+        //     } catch(e){
+        //         document.querySelector("#cute").innerHTML = (`Not a cute animal: ${e}`);
+        //     }
+        // }
+
+
+    // 4 then and catch
+    //         function generateWorkingDayAfterDelayAsync(){
+    //         return new Promise(function executor (resolve, reject){
+
+    //             setTimeout( () =>{
+    //                 let days = ["Sunday", "Monday", "Thursday", "Wednesday", "Friday", "Saturday"]
+    //                 let rand = Number.parseInt((Math.random() * 7))
+
+    //                 let resualt = days[rand];
+    //                 if(resualt === "Friday" || resualt === "Saturday"){
+    //                     reject(resualt);
+    //                 } else {
+    //                     resolve(resualt);
+    //                 }
+    //         }
+    //         , 1000)
+            
+    //     }
+    // )}
+    //     function daysFunc(){
+    //         generateWorkingDayAfterDelayAsync().then((val) => document.querySelector("#days").innerHTML = (`GREAT: Day: ${val}`)).catch((val)=> document.querySelector("#days").innerHTML = (`ERROR Day: ${val}`));
+    //     }
+
+        // 4 asnyc-await
+        //     function generateWorkingDayAfterDelayAsync(){
+        //         return new Promise(function executor (resolve, reject){
+
+        //             setTimeout( () =>{
+        //                 let days = ["Sunday", "Monday", "Thursday", "Wednesday", "Friday", "Saturday"]
+        //                 let rand = Number.parseInt((Math.random() * 7))
+
+        //                 let resualt = days[rand];
+        //                 if(resualt === "Friday" || resualt === "Saturday"){
+        //                     reject(resualt);
+        //                 } else {
+        //                     resolve(resualt);
+        //                 }
+        //         }
+        //         , 1000)
+                
+        //     }
+        // )}
+            
+        //     async function daysFunc(){
+        //         try {
+        //         const resualt = await generateWorkingDayAfterDelayAsync()
+        //         document.querySelector("#days").innerHTML = (`GREAT: Day: ${resualt}`)
+        //         } catch(e){
+        //             document.querySelector("#days").innerHTML = (`ERROR Day: ${e}`);
+        //         }
+        //     }
+
+        // 5 then and catch
+    //                 function getArrayFromServerAsync(size){
+    //         return new Promise(function executor (resolve, reject){
+
+    //             setTimeout( () =>{
+    //                 // let days = ["Sunday", "Monday", "Thursday", "Wednesday", "Friday", "Saturday"]
+    //                 let rand = Number.parseInt((Math.random() * 100))
+    //                 let array = [];
+    //                 if(rand % 2 === 0){
+    //                     for(let i=0; i < size; i++){
+    //                         array.push(Number.parseInt((Math.random() * 100)))
+    //                     }
+    //                     resolve(array);
+    //                 } else {
+    //                     reject("Cannot get the array from server!")
+    //                 }
+    //         }
+    //         , 1000)
+            
+    //     }
+    // )}
+    //     function sizeFunc(){
+    //         getArrayFromServerAsync(20).then((val) => document.querySelector("#size").innerHTML = (`SUCCESS: Array: ${val}`)).catch((val)=> document.querySelector("#size").innerHTML = (`ERROR: ${val}`));
+    //     }
+
+        // 5 async-await
+
+    //     function getArrayFromServerAsync(size){
+    //         return new Promise(function executor (resolve, reject){
+
+    //             setTimeout( () =>{
+    //                 // let days = ["Sunday", "Monday", "Thursday", "Wednesday", "Friday", "Saturday"]
+    //                 let rand = Number.parseInt((Math.random() * 100))
+    //                 let array = [];
+    //                 if(rand % 2 === 0){
+    //                     for(let i=0; i < size; i++){
+    //                         array.push(Number.parseInt((Math.random() * 100)))
+    //                     }
+    //                     resolve(array);
+    //                 } else {
+    //                     reject("Cannot get the array from server!")
+    //                 }
+    //         }
+    //         , 1000)
+            
+    //     }
+    // )}
+
+    //         async function sizeFunc(){
+    //             try {
+    //             const resualt = await getArrayFromServerAsync(20)
+    //             document.querySelector("#size").innerHTML = (`SUCCESS: Array: ${resualt}`);
+    //             } catch(e){
+    //                 document.querySelector("#size").innerHTML = (`ERROR: ${e}`);
+    //             }
+    //         }
+
+    // 6 then and catch
+
+    //                 function getPizzaFromServerAsync(){
+    //         return new Promise(function executor (resolve, reject){
+
+    //             setTimeout( () =>{
+    //                 let n = Number.parseInt((Math.random() * 100))
+    //                 if(n % 2 === 0){
+    //                     let pizza = {
+    //                         diameter: Number.parseInt((Math.random() * 50 - 10) + 10),
+    //                         price: Number.parseInt((Math.random() * 80 - 20) + 20),
+    //                         Topping: Math.floor(Math.random() * 5)
+    //                     }
+    //                     resolve(pizza);
+    //                 } else {
+    //                     reject("Cannot get the pizza object from server!")
+    //                 }
+    //         }
+    //         , 1000)
+            
+    //     }
+    // )}
+    //     function pizzaFunc(){
+    //         getPizzaFromServerAsync().then((val) => document.querySelector("#pizza").innerHTML = (`SUCCESS: Pizza:<br/> diameter is: ${val.diameter},<br/> price is:  ${val.price},<br/> numbers of topping: ${val.Topping}`)).catch((val)=> document.querySelector("#pizza").innerHTML = (`ERROR: ${val}`));
+    //     }
+
+        // 6 async-await
+
+    //     function getPizzaFromServerAsync(){
+    //         return new Promise(function executor (resolve, reject){
+
+    //             setTimeout( () =>{
+    //                 let n = Number.parseInt((Math.random() * 100))
+    //                 if(n % 2 === 0){
+    //                     let pizza = {
+    //                         diameter: Number.parseInt((Math.random() * 50 - 10) + 10),
+    //                         price: Number.parseInt((Math.random() * 80 - 20) + 20),
+    //                         Topping: Math.floor(Math.random() * 5)
+    //                     }
+    //                     resolve(pizza);
+    //                 } else {
+    //                     reject("Cannot get the pizza object from server!")
+    //                 }
+    //         }
+    //         , 1000)
+            
+    //     }
+    // )}
+
+        // async function pizzaFunc(){
+        //         try {
+        //         const resualt = await getPizzaFromServerAsync()
+        //         document.querySelector("#pizza").innerHTML = `SUCCESS: Pizza:<br/> diameter is: ${resualt.diameter},<br/> price is:  ${resualt.price},<br/> numbers of topping: ${resualt.Topping}`;
+        //         } catch(e){
+        //             document.querySelector("#pizza").innerHTML = (`ERROR: ${e}`);
+        //         }
+        //     }
+
+
+        // 7 then and catch
+    
+        function generateStrongPasswordAsync(){
+            return new Promise(function executor (resolve, reject){
+
+                setTimeout( () =>{
+                    let n = Number.parseInt((Math.random() * 100))
+                    let passwordArray = ["A", "B", "C", "$", "!", "#", "g", "b", "t"];
+                    let password = "";
+                    for(let i = 0; i < 6; i++){
+                        password += passwordArray[Math.floor(Math.random() * 9)]
+                    }
+                    if(password.search(/[A-Z]/) == -1 || password.search(/[a-z]/)  == -1 || password.search(/[!@#$%^&*]/) == -1){
+
+                        
+                        reject(`Password do not storng enough:<br/> ${password}`)
+                    } else {
+                        resolve(password);
+                    }
+                    
+            }
+            , 1000)
+            
+        }
+    )}
+        function passwordFunc(){
+            generateStrongPasswordAsync().then((val) => document.querySelector("#password").innerHTML = (`GREAT: ${val}`)).catch((val)=> document.querySelector("#password").innerHTML = (`ERROR: ${val}`));
+        }
+
+
+        // 7 async-await
+    
+    //     function generateStrongPasswordAsync(){
+    //         return new Promise(function executor (resolve, reject){
+
+    //             setTimeout( () =>{
+    //                 let n = Number.parseInt((Math.random() * 100))
+    //                 let passwordArray = ["A", "B", "C", "$", "!", "#", "g", "b", "t"];
+    //                 let password = "";
+    //                 for(let i = 0; i < 6; i++){
+    //                     password += passwordArray[Math.floor(Math.random() * 9)]
+    //                 }
+    //                 if(password.search(/[A-Z]/) == -1 || password.search(/[a-z]/)  == -1 || password.search(/[!@#$%^&*]/) == -1){
+
+    //                     reject(`Password do not storng enough:<br/> ${password}`)
+    //                 } else {
+    //                     resolve(password);
+    //                 }
+                    
+    //         }
+    //         , 1000)
+            
+    //     }
+    // )}
+
+    //     async function passwordFunc(){
+    //             try {
+    //             const resualt = await generateStrongPasswordAsync()
+    //             document.querySelector("#password").innerHTML = (`GREAT: ${resualt}`);
+    //             } catch(e){
+    //                 document.querySelector("#password").innerHTML = (`ERROR: ${e}`);
+    //             }
+    //         }
+
+
+    </script>
+</body>
+</html>

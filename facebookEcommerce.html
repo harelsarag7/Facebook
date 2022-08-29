@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: rgb(244, 244, 244) !important;
+        }
+
+        .header{
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding:    2px !important;
+            background-color: white !important;
+            box-shadow: 0 0 4px 0.6px rgb(179, 179, 179);
+            position: fixed !important;
+            z-index: 999;
+            width: 100%;
+            top: 0;
+        }
+        .headerLi{
+            display: flex;
+            margin: 0 auto;
+        }
+
+        .searchHeader{
+    position: fixed;
+    right: 10px;
+    top: 5px;
+    z-index: 999;
+}
+        .active{
+            border-bottom: 3px solid black;
+        }
+        .header img {
+            margin: 0 30px;
+        }
+    #facebookImg{
+        z-index: 9999;
+        position: fixed;
+        top:0;
+        width: 140px;
+          }       
+          #facebookSearch{
+    padding: 8px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(244, 244, 244);
+    width: 250px;
+    position: relative;
+    right: 20px;
+}
+
+#facebookSearch::placeholder{
+    color: gray;
+    position: relative;
+    left: 35px;
+}
+#facebookSearchLabel:hover {
+    cursor: text;
+}
+#facebookSearchLabel {
+    position: absolute;
+    z-index: 5;
+    right: 87px;
+    top: 9px;
+    color: gray;
+    width: 140px ;
+}
+
+.focusSearch {
+    /* position: relative !important; */
+    right: 120px !important;
+    transition: 0.2s !important;
+}  
+#searchIcon{
+    position: relative;
+    left: 45px;
+    top: 12px;
+    z-index: 5;
+}
+
+
+#image{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+
+    /* justify-content: space-between; */
+}
+
+#image + label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.10em;
+    font-weight: 500;
+    color: rgb(145, 145, 145);
+    padding: 6px 20px;
+    border-radius: 15px;
+    /* display: inline-block; */
+    cursor: pointer; /* "hand" cursor */
+}
+
+#image:focus + label,
+#image +label:hover{
+    background-color: rgb(244, 244, 244);
+}
+
+#imageIcon{
+    margin: 0 10px 0 0;
+}
+#newProduct{
+    background-color: rgb(217, 237, 244) !important;
+    border: none;
+    color:rgb(58, 58, 254);
+    font-weight: 600;
+    margin-top:150px; 
+    width: 280px;
+    margin-left: 40px;
+}
+#newProduct:hover {
+    background-color: rgb(213, 229, 234) !important;
+}
+
+
+    </style>
+    <style>
+        .allProducts{
+            display: flex;
+            /* justify-content: center; */
+            flex-wrap: wrap;
+            width: 900px;
+            position: relative;
+            left: 28%;
+            bottom: 70px;
+        }
+        .product{
+            margin: 8px;
+        }
+        .productImage{
+            width: 200px;
+            border-radius: 7px;
+            border: 0.4px solid rgb(255, 255, 255);
+            outline: 1px solid rgb(210, 210, 210);
+        }
+    
+        .productPrice{
+            margin-top: 5px;
+            margin-left: 3px;
+            font-weight: 600;
+            color: black;
+        }
+        .productName{
+            margin-left: 3px;
+            color: black;
+            width: 200px;
+            position: relative;
+            bottom: 15px;
+            height: 18px;
+        }
+    </style>
+
+<!-- CSS only -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">  
+</head>
+<body>
+    
+    <img id="facebookImg" src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"  alt="">
+
+    <nav class="navbar navbar-expand-lg header">
+        <div class="container-fluid  ">
+`             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 headerLi">
+              <li class="nav-item">
+                <a  class="nav-link " onmouseenter="enterHome()" onmouseout="outHome()"  aria-current="page" href="facebookJQ.html"><img  onmouseenter="enterHome()" onmouseout="outHome()" id="home"src="https://i.ibb.co/QmP2ByG/1946488.png"  width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><img src="https://i.ibb.co/2SLCRKC/2791441.png" width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" onmouseenter="enterEcommerce()" onmouseout="outEcommerce()"  href="#"><img onmouseenter="enterEcommerce()" onmouseout="outEcommerce()"   id="ecommerce"src="https://i.ibb.co/kMyLHwD/3514491.png" width="25px"  alt=""></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onmouseenter="enterGroup()" onmouseout="outGroup()" href="#"><img id="group"  onmouseenter="enterGroup()" onmouseout="outGroup()" src="https://i.ibb.co/VpKBmNK/681443.png" width="25px"  alt=""></a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+        <li class="nav-item navbar-nav searchHeader">
+            <img id="searchIcon" src="https://i.ibb.co/ss1QqFY/622669.png"  width="18px" height="18px" alt="">
+            <label for="facebookSearch" id="facebookSearchLabel">Search in facebook:</label>
+            <input onfocus="focusSearch()" onfocusout="focusOutSearch()" oninput="onInputSearch()"  name="facebookSearch" type="search" id="facebookSearch" >
+        </li>
+      </nav>
+
+<!-- Button trigger modal -->
+<button type="button" id="newProduct"  class="btn btn1 btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  + Create new Item
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Sell your Item!</h5>
+        <button type="button" class="btn-close btn2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control nameNewProduct" id="floatingInput nameNewProduct" placeholder="Item name:">
+          <label for="floatingInput">Item name:</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" oninput="priceInput()" class="form-control priceNewProduct" min="0" id="floatingInput nameNewProduct" placeholder="Price:">
+          <label for="floatingInput">Price:</label>
+        </div>
+
+        <div style="width: 190px;">
+    <input type="file" name="image" id="image">
+    <label for="image"><img id="imageIcon"  src="https://i.ibb.co/pftpmGF/3792702.png" width="30px" alt=""> <span> Choose a file</span> </label>
+</div>
+
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary container-fluid" onclick="publishProduct()" id="publishProduct" data-bs-dismiss="modal">Publish</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="allProducts" >
+    <div class="product">
+        <img class="productImage" src="https://scontent-lhr8-2.xx.fbcdn.net/v/t45.5328-4/284692629_5531587863528326_1301574991371442168_n.jpg?stp=c0.190.403.403a_dst-jpg_p403x403&_nc_cat=101&ccb=1-7&_nc_sid=c48759&_nc_ohc=JqMfFcmr2a8AX9KFuew&_nc_ht=scontent-lhr8-2.xx&oh=00_AT_XFsUBp7uqIsPUJd2JyzpJ-mntzHTtb8gebay71p7r9g&oe=630658D8" alt="">
+        <p class="productPrice">420₪</p>
+        <p class="productName">Sideboard and table &#128525</p>
+        </div>
+    <div class="product">
+        <img class="productImage" src="https://scontent-lhr8-1.xx.fbcdn.net/v/t45.5328-4/279575450_5898470336833774_9179364504994220846_n.jpg?stp=c65.0.395.395a_dst-jpg_p526x395&_nc_cat=103&ccb=1-7&_nc_sid=c48759&_nc_ohc=1NFmOJ_x_2MAX-y0AWW&_nc_oc=AQnbrLsHEL3RAoQFqfWa7wDzJoGgEFp8e97sUiHHyoeHhBK6VnWJw-KPiQ-44dRb8wA&tn=bmrFmKjsZR_xlRNM&_nc_ht=scontent-lhr8-1.xx&oh=00_AT_h57mMLxND1GcmkWzkuSxGcFUvzWiHhpTSswuSbA4-lQ&oe=6307DF14" alt="">
+        <p class="productPrice">350₪</p>
+        <p class="productName">New Original Airpods 2!</p>
+    </div>
+    <div class="product">
+        <img class="productImage" src="https://scontent-lhr8-2.xx.fbcdn.net/v/t45.5328-4/279673866_5236645133055858_4239225367368923309_n.jpg?stp=c229.0.393.393a_dst-jpg_p851x315&_nc_cat=104&ccb=1-7&_nc_sid=c48759&_nc_ohc=qZeN8LdlX1UAX92Qjgu&_nc_ht=scontent-lhr8-2.xx&oh=00_AT9ELEvhKtYmyr6QGMLWORCFXw38MzYoSSXayifampWPVA&oe=6307A7D6" alt="">
+        <p class="productPrice">900₪</p>
+        <p class="productName">All equipment for sale &#9989 Except for the screens &#128522</p>
+        <!-- <p class="productName">Except for the screens</p> -->
+    </div>
+    <div class="product">
+        <img class="productImage" src="https://scontent-lhr8-2.xx.fbcdn.net/v/t45.5328-4/247065074_4360038064093649_2550643838399723843_n.jpg?stp=c38.0.350.350a_dst-jpg_p350x350&_nc_cat=105&ccb=1-7&_nc_sid=c48759&_nc_ohc=EzDUkfVouy4AX-rXme7&tn=bmrFmKjsZR_xlRNM&_nc_ht=scontent-lhr8-2.xx&oh=00_AT-EoSZbrJxM7LaZ6ftrmrAcrNlzw2xlx8mRld1n2QcDHQ&oe=63074BC2" alt="">
+        <p class="productPrice">419₪</p>
+        <p class="productName">Laptop stand</p>
+    </div>
+    <div class="product">
+        <img class="productImage" src="https://scontent-lhr8-1.xx.fbcdn.net/v/t45.5328-4/296174058_5290719374347360_8850783822439858269_n.jpg?stp=c65.0.395.395a_dst-jpg_p526x395&_nc_cat=109&ccb=1-7&_nc_sid=c48759&_nc_ohc=LoEvSk84JbQAX_kL4YZ&_nc_ht=scontent-lhr8-1.xx&oh=00_AT9qDpchCyQYjooGW30v8RkNsYEpFe_nMADbRD6-6DLbDQ&oe=6306E2CE" alt="">
+        <p class="productPrice">100₪</p>
+        <p class="productName">32 inch TV &#128250</p>
+    </div>
+    <div class="product">
+        <img class="productImage" src="https://scontent-lhr8-1.xx.fbcdn.net/v/t45.5328-4/287253512_8727150400631993_2853065313132154245_n.jpg?stp=c0.66.403.403a_dst-jpg_p403x403&_nc_cat=107&ccb=1-7&_nc_sid=c48759&_nc_ohc=1o1MdXIHDTkAX8q3guM&_nc_ht=scontent-lhr8-1.xx&oh=00_AT9XRZ3Mx2li-a5sGHlCAM5X3BHlG4FUyEelpo0_l8Bq_g&oe=63063E25" alt="">
+        <p class="productPrice">900₪</p>
+        <p class="productName">Samsung</p>
+    </div>
+    <div class="product">
+        <img class="productImage" src="https://scontent-lhr8-2.xx.fbcdn.net/v/t45.5328-4/279971950_6087670014594941_4453365177820015583_n.jpg?stp=c0.66.403.403a_dst-jpg_p403x403&_nc_cat=104&ccb=1-7&_nc_sid=c48759&_nc_ohc=GtWV1edhTggAX-fR6Xa&tn=bmrFmKjsZR_xlRNM&_nc_ht=scontent-lhr8-2.xx&oh=00_AT-ffcmDpI7qPvslRFaQQsJ1eF956x1To47KT-Y1OL6Yaw&oe=630692B5" alt="">
+        <p class="productPrice">25₪</p>
+        <p class="productName">Cranz pistachio 25 per unit</p>
+    </div>
+    <div class="product">
+        <img class="productImage" src="https://scontent-lhr8-2.xx.fbcdn.net/v/t45.5328-4/278528056_5403441923055444_1169115142100817318_n.png?stp=c0.234.403.403a_dst-jpg_p403x403&_nc_cat=104&ccb=1-7&_nc_sid=c48759&_nc_ohc=O8OWJqb7ev0AX9gMK-b&_nc_ht=scontent-lhr8-2.xx&oh=00_AT_PT9T0_tXU26Zygs2t3o1qyckEMngorZIRu8dtEtKqrA&oe=6308185C" alt="">
+        <p class="productPrice">1400₪</p>
+        <p class="productName">Velvet fabric bed &#128518</p>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector("#publishProduct").addEventListener("click", () => {
+
+        // function publishProduct(){
+
+            let div = document.createElement("div")
+            div.setAttribute("class", "product")
+            
+            let img = document.createElement("img")
+            img.setAttribute("class", "productImage")
+            img.src = "https://scontent-lhr8-2.xx.fbcdn.net/v/t45.5328-4/279807375_5465489483497332_3645942582513930356_n.jpg?stp=c1.0.403.403a_dst-jpg_p403x403&_nc_cat=101&ccb=1-7&_nc_sid=c48759&_nc_ohc=N03GlyHVArcAX8Rx_lO&_nc_ht=scontent-lhr8-2.xx&oh=00_AT_z29tG3icS1IVvoN34qdislYjEnhmQFQD9dRdtyBhkDQ&oe=6307364C"
+
+            let price = document.createElement("p")
+price.setAttribute("class", "productPrice")
+// price.textContent = document.querySelector("#priceNewProduct").value;
+price.innerHTML = "200₪"
+
+let productName = document.createElement("p")
+productName.setAttribute("class", "productName")
+// productName.textContent =  document.querySelector("#nameNewProduct").value;
+productName.innerHTML =  "IMAC 27 INCH 5K SCREEN"  
+
+div.append(img, price, productName)
+document.querySelector(".allProducts").append(div)
+
+document.querySelector("#priceNewProduct").innerHTML = "";
+document.querySelector("#nameNewProduct").value = "";
+// }
+
+})
+  </script>
+    <script>
+
+document.querySelector(".btn1").addEventListener("click", ()=>{
+            document.querySelector("#facebookImg").style.opacity = "40%"
+        })
+document.querySelector(".btn2").addEventListener("click", ()=>{
+            document.querySelector("#facebookImg").style.opacity = "100%"
+        })
+document.querySelector("#publishProduct").addEventListener("click", ()=>{
+            document.querySelector("#facebookImg").style.opacity = "100%"
+        })
+
+        function focusSearch(){
+            document.querySelector("#searchIcon").style.display = "none";
+            document.querySelector("#facebookSearchLabel").classList.add("focusSearch")
+        }
+        
+        function focusOutSearch(){
+            if(document.querySelector("#facebookSearch").value === ``){
+            document.querySelector("#searchIcon").style.display = "none";
+            }
+            document.querySelector("#facebookSearchLabel").classList.remove("focusSearch")
+        }
+        
+        function onInputSearch(){
+            if(document.querySelector("#facebookSearch").value !== ""){
+                document.querySelector("#facebookSearchLabel").style.display = "none";
+            } else {
+                document.querySelector("#facebookSearchLabel").style.display = "block";
+            }
+        }
+
+ document.querySelector("#facebookSearch").addEventListener('focusout', (event) => {
+    if(document.querySelector("#facebookSearch").value == ""){
+    document.querySelector("#searchIcon").style.display = "block";}
+    });
+
+
+
+
+        // function priceInput(){
+        //     if(document.querySelector(".priceNewProduct").value == 0){
+        //         // 0 = "free"
+        //         document.querySelector(".priceNewProduct").value = "0" + "free";
+        //     }
+        // }
+
+
+        function enterHome(){
+            document.querySelector("#home").src = "https://i.ibb.co/RzbVZWB/1946436.png";
+        }
+
+        function outHome(){
+            document.querySelector("#home").src = "https://i.ibb.co/QmP2ByG/1946488.png";
+        }
+
+        // function enterEcommerce(){
+        //     document.querySelector("#ecommerce").src = "https://i.ibb.co/kMyLHwD/3514491.png";
+        // }
+
+        // function outEcommerce(){
+        //     document.querySelector("#ecommerce").src = "https://i.ibb.co/3cskgTm/1332655.png";
+        // }
+        
+        function enterGroup(){
+            document.querySelector("#group").src = "https://i.ibb.co/HNb7s1C/681494.png";
+        }
+        function outGroup(){
+            document.querySelector("#group").src = "https://i.ibb.co/VpKBmNK/681443.png";
+        }
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>
